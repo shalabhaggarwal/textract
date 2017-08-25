@@ -5,6 +5,7 @@
 ..   * python setup.py sdist upload
 ..   * convert into release https://github.com/deanmalmgren/textract/releases
 
+
 textract
 ========
 
@@ -12,29 +13,10 @@ Extract text from any document. No muss. No fuss.
 
 `Full documentation <http://textract.readthedocs.org>`__.
 
-|Build Status| |Version| |Downloads| |Test Coverage| |Documentation Status|
-|Updates| |Stars| |Forks|
+textract-page
+=============
 
-.. |Build Status| image:: https://travis-ci.org/deanmalmgren/textract.svg?branch=master
-   :target: https://travis-ci.org/deanmalmgren/textract
+This is a fork of `textract <https://github.com/deanmalmgren/textract>`__ which provides an additional feature of extracting text from PPTX and PDF documents on a per page basis.
+To use this feature, pass ``page`` which is a boolean value as an option to ``textract.process`` method. For example::
 
-.. |Version| image:: https://img.shields.io/pypi/v/textract.svg
-   :target: https://warehouse.python.org/project/textract/
-
-.. |Downloads| image:: https://img.shields.io/pypi/dm/textract.svg
-   :target: https://warehouse.python.org/project/textract/
-
-.. |Test Coverage| image:: https://coveralls.io/repos/deanmalmgren/textract/badge.png
-   :target: https://coveralls.io/r/deanmalmgren/textract
-
-.. |Documentation Status| image:: https://readthedocs.org/projects/textract/badge/?version=latest
-   :target: https://readthedocs.org/projects/textract/?badge=latest
-
-.. |Updates| image:: https://pyup.io/repos/github/deanmalmgren/textract/shield.svg
-    :target: https://pyup.io/repos/github/deanmalmgren/textract/
-
-.. |Stars| image:: https://img.shields.io/github/stars/deanmalmgren/textract.svg
-    :target: https://github.com/deanmalmgren/textract/stargazers
-
-.. |Forks| image:: https://img.shields.io/github/forks/deanmalmgren/textract.svg
-    :target: https://github.com/deanmalmgren/textract/network
+	text = textract.process('path/to/a.pptx', page=True)
