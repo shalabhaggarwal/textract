@@ -12,7 +12,7 @@ scripts = glob.glob("bin/*")
 with open("README.rst") as stream:
     long_description = stream.read()
 
-github_url = 'https://github.com/deanmalmgren/textract'
+github_url = 'https://github.com/shalabhaggarwal/textract-page'
 
 
 def parse_requirements(requirements_filename):
@@ -48,8 +48,8 @@ setup(
     long_description=long_description,
     url=github_url,
     download_url="%s/archives/master" % github_url,
-    author='Dean Malmgren',
-    author_email='dean.malmgren@datascopeanalytics.com',
+    author='Dean Malmgren, Shalabh Aggarwal',
+    author_email='dean.malmgren@datascopeanalytics.com, contact@shalabhaggarwal.com',
     license='MIT',
     scripts=scripts,
     packages=[
