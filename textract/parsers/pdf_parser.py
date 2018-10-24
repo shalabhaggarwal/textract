@@ -1,6 +1,7 @@
 import os
 import shutil
 import six
+import json
 from tempfile import mkdtemp
 
 from ..exceptions import UnknownMethod, ShellError
@@ -52,14 +53,14 @@ class Parser(ShellParser):
         """Extract text from pdfs using tesseract (per-page OCR)."""
         temp_dir = mkdtemp()
         base = os.path.join(temp_dir, 'conv')
-        contents = []
+        contents = {}
         try:
             stdout, _ = self.run(['pdftoppm', filename, base])
 
-            for page in sorted(os.listdir(temp_dir)):
+            for index, page in enumerate(sorted(os.listdir(temp_dir))):
                 page_path = os.path.join(temp_dir, page)
                 page_content = TesseractParser().extract(page_path, **kwargs)
-                contents.append(page_content)
-            return six.b('').join(contents)
+                contents[index] = six.b('').join([page_content]).decode()
+            return json.dumps(contents)
         finally:
             shutil.rmtree(temp_dir)
